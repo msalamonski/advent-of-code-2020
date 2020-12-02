@@ -12,9 +12,10 @@ def parse():
         pos = par[0].split('-') # position
         lett = par[1][0] # letter/character
         pasw = par[2] # password
+        pos1 = pasw[int(pos[0]) - 1] # first position
+        pos2 = pasw[int(pos[1]) - 1] # second position
 
-        if (lett in (pasw[int(pos[0]) - 1], pasw[int(pos[1]) - 1]) and not
-        (pasw[int(pos[0]) - 1] == pasw[int(pos[1]) - 1])):
+        if lett in (pos1, pos2) and not pos1 == pos2:
             valid += 1
     return valid
 

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' AoC 2 '''
+''' AoC 2 -- part 1 '''
 with open('input.txt', 'r') as i:
     INP = i.readlines()
     INP = [x.strip() for x in INP] # take out \n from readlines()
@@ -13,8 +13,7 @@ def parse():
         lett = par[1][0] # letter/character
         pasw = par[2] # password
 
-        occ = occurances(lett, pasw)
-        if int(freq[0]) <= occ <= int(freq[1]):
+        if int(freq[0]) <= occurances(lett, passw) <= int(freq[1]):
             valid += 1
     return valid
 
@@ -28,4 +27,3 @@ def occurances(lett, pasw):
 
 if __name__ == '__main__':
     print(parse())
-    # parse()
