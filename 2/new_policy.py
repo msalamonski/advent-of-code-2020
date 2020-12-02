@@ -13,7 +13,7 @@ def parse():
         lett = par[1][0] # letter/character
         pasw = par[2] # password
 
-        if (pasw[int(pos[0]) - 1] == lett) and (pasw[int(pos[1]) - 1] != lett):
+        if ((pasw[int(pos[0]) - 1] == lett) or (pasw[int(pos[1]) - 1] == lett)) and not (pasw[int(pos[0]) - 1] == pasw[int(pos[1]) - 1]):
             valid += 1
     return valid
 
