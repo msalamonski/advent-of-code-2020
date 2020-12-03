@@ -13,7 +13,7 @@ def parse():
         lett = par[1][0] # letter/character
         pasw = par[2] # password
 
-        if int(freq[0]) <= occurances(lett, passw) <= int(freq[1]):
+        if int(freq[0]) <= occurances(lett, pasw) <= int(freq[1]):
             valid += 1
     return valid
 
