@@ -11,6 +11,7 @@ def passport():
     valid = 0
     new_valid = 0
     passp = ''
+    based = 0
     for passport in INP:
         if len(passport) > 3:
             passp += (' ' + passport)
@@ -23,7 +24,7 @@ def passport():
             'iyr' in passp and
             'hgt' in passp):
             valid += 1
-            # print(str(valid) + ':' + passp)
+            based += 1
             new_valid += valid_passport(passp)
         passp = ''
     return 'valid passports: ' + str(new_valid) # note that the last line is not counted
@@ -34,7 +35,6 @@ def valid_passport(line):
     color = 'amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'
     ecl, pid, eyr, hcl, byr, iyr, hgt = '', '', '', '', '', '', ''
     valid = 0
-    # print(line.split())
     passp = line.split()
     for k in passp:
         if key[0] in k:
@@ -52,12 +52,12 @@ def valid_passport(line):
         if key[6] in k:
             hgt = k[4:]
 
-        # print(byr)
-    if ((1920 < int(byr) < 2002) and
-    (2010 < int(iyr) < 2020) and
-    (2020 < int(eyr) < 2030)):
+    if ((1920 <= int(byr) <= 2002) and
+    (2010 <= int(iyr) <= 2020) and
+    (2020 <= int(eyr) <= 2030)):
+        print(byr)
         if 'cm' in hgt:
-            if 150 < int(hgt.replace('cm', '')) < 193:
+            if 150 <= int(hgt.replace('cm', '')) <= 193:
                 match = re.search(r'^#(?:[0-9a-fA-F]{3}){1,2}$', hcl)
                 if match:
                     for eye in color:
@@ -65,7 +65,7 @@ def valid_passport(line):
                             if len(pid) == 9:
                                 valid += 1
         if 'in' in hgt:
-            if 59 < int(hgt.replace('in', '')) < 76:
+            if 59 <= int(hgt.replace('in', '')) <= 76:
                 match = re.search(r'^#(?:[0-9a-fA-F]{3}){1,2}$', hcl)
                 if match:
                     for eye in color:
