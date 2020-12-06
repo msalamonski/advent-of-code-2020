@@ -20,5 +20,4 @@ Day       Time   Rank  Score       Time   Rank  Score
   1   04:31:17  17600      0   13:52:41  46712      0
 ```
 
-There are roughly 111,137 competitors. On day 6 I ranked 8,626. (Top 10,000)
-
+There are roughly 111,137+ competitors. On day 6 (part 1) I ranked 8,626. (Top 10,000)
