@@ -14,7 +14,6 @@ def bags():
         if target in line.strip().split(' ', 2)[2]:
             if begg not in can_hold:
                 can_hold.append(begg)
-
     i = 0
     while True:
         try:
@@ -36,12 +35,26 @@ def reverse_bags():
     target = 'shiny gold'
     can_hold = []
     for line in fileinput.input(): # find target's rules
-        if target in line.strip():
+        if line.strip().startswith(target):
             t_line = line.strip()
             break
-    print(t_line)
+    t_line = t_line.split(' bags contain ')
+    tree = t_line[0]
+    branch = t_line[1].split(', ')
+
+    leaf = branch[0].split(' ', 1)
+    # if len(branch) > 1: # more than one item
+    leafq = leaf[0]
+    leafc = leaf[1].split()[0] + ' ' + leaf[1].split()[1]
+
+    print(tree) # shiny gold
+    print(branch) # what's in the shiny gold bag
+    # print(leaf)
+    print(leafq) # bagX quantity
+    print(leafc) # bagX color
+
     # for line in fileinput.input():
 
 if __name__ == '__main__':
-    # print(reverse_bags())
-    print(bags())
+    reverse_bags()
+    # print(bags())

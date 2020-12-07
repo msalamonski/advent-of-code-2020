@@ -12,6 +12,7 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  7   01:34:51   7586      0          -      -      -
   6   00:37:05   8626      0   02:35:52  12811      0
   5   02:41:26  12926      0   03:06:20  12954      0
   4   01:09:12   9891      0   15:55:59  42660      0
