@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+''' AoC 8 -- ./accu.py 8.ex'''
+import fileinput
+
+def accumulator():
+    ''' what value is in the accumulator '''
+    inst = []
+    cur, acc, = 0, 0
+    for line in fileinput.input():
+        inst.append(line.strip())
+    while True:
+        step = inst[cur]
+        if step == '!':
+            return acc
+        inst[cur] = '!'
+        if 'acc' in step:
+            acc += int(step.split()[1])
+            cur += 1
+        elif 'jmp' in step:
+            cur += int(step.split()[1])
+        else:
+            cur += 1
+        print(str(cur) + ' ' + step + ': ' + str(acc))
+        step = '!'
+    return None
+
+if __name__ == '__main__':
+    print(accumulator())
