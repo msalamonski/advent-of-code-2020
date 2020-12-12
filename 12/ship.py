@@ -3,43 +3,53 @@
 import fileinput
 from angles import normalize
 
-def ship():
-    ''' What is the distance between the end location and starting position? '''
-    # move a cursor/add values to variables according to certain rules per line
-    east, north = 0, 0
-    face = 0 # east
-    for line in fileinput.input():
-        line = line.strip()
-        num = int(line[1:])
-        print('MOVING:: east: ' + str(east) + ' | north: ' + str(north))
-        if 'N' in line:
-            north += num
-        if 'S' in line:
-            north -= num
-        if 'E' in line:
+east, north = 0, 0
+face = 0 # east
+wp_e, wp_n = 10, 1 # waypoint
+wps_e, wps_n = 0, 0 # waypoint ship (for part 2)
+for line in fileinput.input():
+    num = int(line.strip()[1:])
+    if 'N' in line:
+        north += num
+        wp_n += num
+    if 'S' in line:
+        north -= num
+        wp_n -= num
+    if 'E' in line:
+        east += num
+        wp_e += num
+    if 'W' in line:
+        east -= num
+        wp_e -= num
+    if 'L' in line:
+        face += num
+        face = normalize(face)
+        while num:
+            wp_e, wp_n = -wp_n, wp_e
+            num -= 90
+    if 'R' in line:
+        face -= num
+        face = normalize(face)
+        while num:
+            wp_e, wp_n = wp_n, -wp_e
+            num -= 90
+    if 'F' in line:
+        face = normalize(face)
+        if face == 0:
             east += num
-        if 'W' in line:
+        if face == 90:
+            north += num
+        if face == 180:
             east -= num
-        if 'L' in line:
-            face += num
-        if 'R' in line:
-            face -= num
-        if 'F' in line:
-            face = normalize(face)
-            print(face)
-            if face == 0:
-                east += num
-            if face == 90:
-                north += num
-            if face == 180:
-                east -= num
-            if face == 270:
-                north -= num
-            ###
-    print('east: ' + str(east) + ' | north: ' + str(north))
-    print('manhattan distance: ' + str(abs(east) + abs(north)))
+        if face == 270:
+            north -= num
+        for i in range(num):
+            wps_e += wp_e
+            wps_n += wp_n
 
-    return None
-    
-if __name__ == '__main__':
-    ship()
+print('part 1:')
+print('east: ' + str(east) + ' | north: ' + str(north))
+print('manhattan distance: ' + str(abs(east) + abs(north)))
+print('part 2:')
+print('east: ' + str(wps_e) + ' | north: ' + str(wps_n))
+print('manhattan distance: ' + str(abs(wps_e) + abs(wps_n)))
