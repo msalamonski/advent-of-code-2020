@@ -12,6 +12,7 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 13   09:40:07  23047      0          -      -      -
  12   00:39:30   5145      0   03:46:07   8811      0
  10   00:34:39   7775      0   00:55:44   3013      0
   9   01:56:53  12221      0   04:34:43  18553      0
@@ -25,4 +26,4 @@ Day       Time   Rank  Score       Time   Rank  Score
   1   04:31:17  17600      0   13:52:41  46712      0
 ```
 
-There are roughly 130,207+ competitors.
+There are roughly 132,245+ competitors.
